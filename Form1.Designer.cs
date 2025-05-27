@@ -42,7 +42,6 @@
             this.tbNumber1.Name = "tbNumber1";
             this.tbNumber1.Size = new System.Drawing.Size(116, 41);
             this.tbNumber1.TabIndex = 0;
-            
             // 
             // tbNumber2
             // 
@@ -51,7 +50,6 @@
             this.tbNumber2.Name = "tbNumber2";
             this.tbNumber2.Size = new System.Drawing.Size(116, 41);
             this.tbNumber2.TabIndex = 1;
-            
             // 
             // lbResult
             // 
@@ -80,6 +78,7 @@
             this.btnCalculate.TabIndex = 4;
             this.btnCalculate.Text = "Получить простые числа";
             this.btnCalculate.UseVisualStyleBackColor = true;
+            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
             // Form1
             // 
