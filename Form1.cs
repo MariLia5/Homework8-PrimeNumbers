@@ -15,11 +15,7 @@ namespace PrimeNumbers
         public Form1()
         {
             InitializeComponent();
-
         }
-
-        private void tbNumber2_TextChanged(object sender, EventArgs e){ }
-        private void tbNumber1_TextChanged(object sender, EventArgs e){ }
 
         // Проверка на простое число
         private bool IsPrime(int number)
@@ -28,7 +24,9 @@ namespace PrimeNumbers
             if (number == 2) return true;
             if (number % 2 == 0) return false;
 
-            for (int i = 3; i * i <= number; i += 2)
+            var boundary = (int)Math.Floor(Math.Sqrt(number));
+
+            for (int i = 3; i <= boundary; i += 2)
             {
                 if (number % i == 0)
                     return false;
@@ -36,41 +34,25 @@ namespace PrimeNumbers
             return true;
         }
 
-        // Получение списка чисел
-        private List<int> GetPrimesInRange(int start, int end)
-        {
-            List<int> primes = new List<int>();
-
-            // Проверка, что start меньше end
-            if (start > end)
-            {
-                int temp = start;
-                start = end;
-                end = temp;
-            }
-
-            for (int i = start; i <= end; i++)
-            {
-                if (IsPrime(i))
-                    primes.Add(i);
-            }
-            return primes;
-        }
-
         private void btnCalculate_Click(object sender, EventArgs e)
         {
+            // Очищаем предыдущий результат
+            lbResult.Text = string.Empty;
+
             try
             {
-                int num1 = int.Parse(tbNumber1.Text);
-                int num2 = int.Parse(tbNumber2.Text);
+                int num1 = int.Parse(tbNumber1.Text.Trim());
+                int num2 = int.Parse(tbNumber2.Text.Trim());
 
-                List<int> primes = new List<int>();
                 int start = Math.Min(num1, num2);
                 int end = Math.Max(num1, num2);
 
+                List<int> primes = new List<int>();
+
                 for (int i = start; i <= end; i++)
                 {
-                    if (IsPrime(i)) primes.Add(i);
+                    if (IsPrime(i))
+                        primes.Add(i);
                 }
 
                 if (primes.Count == 0)
@@ -87,6 +69,14 @@ namespace PrimeNumbers
                     }
                     lbResult.Text = result;
                 }
+            }
+            catch (FormatException)
+            {
+                lbResult.Text = "Ошибка: Введите целые числа в оба поля.";
+            }
+            catch (OverflowException)
+            {
+                lbResult.Text = "Ошибка: Число слишком большое или слишком маленькое.";
             }
             catch (Exception ex)
             {

@@ -42,7 +42,7 @@
             this.tbNumber1.Name = "tbNumber1";
             this.tbNumber1.Size = new System.Drawing.Size(116, 41);
             this.tbNumber1.TabIndex = 0;
-            this.tbNumber1.TextChanged += new System.EventHandler(this.tbNumber1_TextChanged);
+            
             // 
             // tbNumber2
             // 
@@ -51,7 +51,7 @@
             this.tbNumber2.Name = "tbNumber2";
             this.tbNumber2.Size = new System.Drawing.Size(116, 41);
             this.tbNumber2.TabIndex = 1;
-            this.tbNumber2.TextChanged += new System.EventHandler(this.tbNumber1_TextChanged);
+            
             // 
             // lbResult
             // 
@@ -60,8 +60,6 @@
             this.lbResult.Name = "lbResult";
             this.lbResult.Size = new System.Drawing.Size(400, 170);
             this.lbResult.TabIndex = 2;
-            this.lbResult.Text = "Результат:";
-
             // 
             // lbStart
             // 
